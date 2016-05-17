@@ -26,7 +26,7 @@ basic endpoints , and a `listen` function.
  ```
  - Check your ** package.json ** file. It should contain `express` as a dependency now
 
- ## Running the server :
+## Running the server :
 
  -To run the server open a new terminal and type in :
 
