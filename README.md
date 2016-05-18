@@ -21,11 +21,10 @@ basic endpoints , and a `listen` function.
 
 - Type the following command :
 
- - ```bash
- $ npm install express --save
- ```
+` $ npm install express --save `
+
  
- - Check your ** package.json ** file. It should contain `express` as a dependency now
+ - Check your ` package.json ` file. It should contain `express` as a dependency now
 
 ## Running the server :
 
