@@ -16,20 +16,30 @@ database.connect();
 
 app.get("/order", function(request, response) {
   idOrder = request.query.idOrder;
-  database.query(`SELECT * FROM orderstbl WHERE idOrder = ?`, [idOrder], function(error, rows){
+  database.query(`SELECT * FROM orderstbl WHERE idOrder = ?`, [idOrder], function(error, rows) {
     if (error) throw error;
     var result = JSON.stringify(rows);
     response.send(result);
   });
-
 });
 
 app.put("/order", function(request, response) {
-  response.send("Welcome to the contact us page!");
+  orderPrice = request.query.orderPrice;
+  idOrder = request.query.idOrder;
+  database.query(`UPDATE orderstbl SET orderPrice = ? WHERE idOrder = ?`, [orderPrice, idOrder], function(error, rows) {
+    if (error) throw error;
+    var result = JSON.stringify(rows);
+    response.send(result);
+  });
 });
 
 app.delete("/order", function(request, response) {
-  response.send("Welcome to the libraries page!");
+  idOrder = request.query.idOrder;
+  database.query(`DELETE FROM orderstbl WHERE idOrder = ? `, [idOrder], function(error, rows) {
+    if (error) throw error;
+    var result = JSON.stringify(rows);
+    response.send(result);
+  });
 });
 
 // Set our server to listen to the port '8081'
