@@ -1,28 +1,34 @@
 // Declare dependecies
 var express     = require("express");
 var app         = express();
-//var mysql       = require("mysql");
+var mysql       = require("mysql");
 
-/*Connect to a database
+
 var database = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
-  database: 'sampledb'
+  database: 'sample-node-server'
 });
 
 database.connect();
-*/
 
-app.get("/", function(request, response) {
-  response.send("Welcome to the homepage page!");
+
+app.get("/order", function(request, response) {
+  idOrder = request.query.idOrder;
+  database.query(`SELECT * FROM orderstbl WHERE idOrder = ?`, [idOrder], function(error, rows){
+    if (error) throw error;
+    var result = JSON.stringify(rows);
+    response.send(result);
+  });
+
 });
 
-app.get("/contactUs", function(request, response) {
+app.put("/order", function(request, response) {
   response.send("Welcome to the contact us page!");
 });
 
-app.get("/libraries", function(request, response) {
+app.delete("/order", function(request, response) {
   response.send("Welcome to the libraries page!");
 });
 
