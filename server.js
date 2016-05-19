@@ -42,6 +42,15 @@ app.delete("/order", function(request, response) {
   });
 });
 
+app.post("/order", function(request, response) {
+    orderPrice = request.query.orderPrice;
+  database.query('INSERT INTO orderstbl SET orderPrice =  ?', [orderPrice], function(error, rows) {
+    if (error) throw error;
+    var result = JSON.stringify(rows);
+    response.send(result);
+  });
+});
+
 // Set our server to listen to the port '8081'
 app.listen(8081, function() {
   console.log("Running! Visit http://localhost:" + 8081 + " in your browser.");

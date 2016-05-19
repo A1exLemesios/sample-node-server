@@ -17,7 +17,7 @@ rules:
   # Possible Errors
   comma-dangle: [2, never]
   no-cond-assign: 2
-  no-console: [2, { allow: ["info", "warn", "error"] }]
+  no-console: [2, { allow: ["info", "warn", "log", "error"] }]
   no-constant-condition: 2
   no-control-regex: 2
   no-debugger: 2
