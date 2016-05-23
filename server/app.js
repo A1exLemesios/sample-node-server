@@ -3,6 +3,12 @@ var express     = require("express");
 var app         = express();
 var mysql       = require("mysql");
 
+app.use(function(request, response, next) {
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Access-Token");
+  next();
+});
 
 var database = mysql.createConnection({
   host: 'localhost',

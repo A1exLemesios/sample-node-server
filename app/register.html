@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <h1>Welcome to the Register page!</h1>
+
+    <div class="register-form">
+      <h4>Registration Form</h4>
+      <input id="firstNameInput" type="text" placeholder="Enter your first name"></input>
+      <br>
+      <input id="lastNameInput" type="text" placeholder="Enter your last name"></input>
+      <br>
+      <button id="submitButton" onclick="registerCustomer()" type="button">Submit!</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  var registerCustomer = function() {
+    var firstName = document.getElementById("firstNameInput").value;
+    var lastName = document.getElementById("lastNameInput").value;
+
+    $.ajax({
+      url: 'http://localhost:8081/customer',
+      type: 'DELETE',
+      data: {
+        firstName: firstName,
+        lastName : lastName
+      },
+      contentType: 'application/json; charset=utf-8',
+      success: function (response) {
+        alert("success");
+      },
+      error: function (error) {
+        alert("some error happened");
+        console.log(error);
+      }
+    });
+  }
+</script>
+
+<style>
+  .register-form {
+    width: 320px;
+    background-color: lightgray;
+    padding: 12px;
+    margin: 12px auto;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+  }
+</style>
