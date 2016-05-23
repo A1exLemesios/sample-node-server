@@ -1,8 +1,9 @@
 # sample-node-server
+
 This is a sample minimal example of a node server , using the express framework (basic endpoints included) . It has three
 basic endpoints , and a `listen` function.
 
-## How to make it work :
+## How to make it work:
 
 - Create a new directory on your PC
 
@@ -17,18 +18,16 @@ basic endpoints , and a `listen` function.
  $ cd [new directory]
  ```
 
-## Express framework installation :
+## Install dependencies:
 
 - Type the following command :
 
-` $ npm install express --save `
+` $ npm install`
 
- 
- - Check your ` package.json ` file. It should contain `express` as a dependency now
 
-## Running the server :
+## Running the server:
 
- -To run the server open a new terminal and type in :
+ -To run the server open a new terminal and type in:
 
   - ```bash
   $ node server.js
