@@ -47,7 +47,7 @@ app.post("/order", function(request, response) {
     price : request.query.price,
     idCustomer : request.query.idCustomer
   }
-  database.query("INSERT INTO order SET ?", [values], function(error, rows) {
+  database.query("INSERT INTO customerOrder SET ?", [values], function(error, rows) {
     if (error) throw error;
     var result = JSON.stringify(rows);
     response.send(result);
