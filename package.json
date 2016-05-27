@@ -1,5 +1,5 @@
 {
-  "name": "project_maggelanus",
+  "name": "node-sample-server",
   "version": "1.0.0",
   "description": "A simple node server with endpoints using the express framework",
   "main": "index.js",

@@ -2,9 +2,7 @@
 <html>
   <body>
     <h1>Pet Shop</h1>
-
     <p>Welcome to the order page </p>
-
     <div class="register-form">
       <h4>Place a new order</h4>
       <input id="priceInput" type="text" placeholder="Enter the price of the order"></input>
@@ -20,21 +18,21 @@
   var newOrder =  function() {
     var price = document.getElementById("priceInput").value;
     var idCustomer = document.getElementById("idCustomerInput").value;
-    console.log(price,idCustomer)
+    console.log(price, idCustomer);
   }
 </script>
 
-  <style>
-    .register-form {
-      width: 320px;
-      background-color: lightgray;
-      padding: 12px;
-      margin: 12px auto;
-    }
+<style>
+  .register-form {
+  width: 320px;
+  background-color: lightgray;
+  padding: 12px;
+  margin: 12px auto;
+  }
 
-    input {
-      display: block;
-      width: 100%;
-    }
-  </style>
+input {
+  display: block;
+  width: 100%;
+}
+</style>
 </html>
