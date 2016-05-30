@@ -1,5 +1,5 @@
 // Declare dependecies
-var express     = require("express");
+/*var express     = require("express");
 var app         = express();
 var mysql       = require("mysql");
 
@@ -18,7 +18,7 @@ var database = mysql.createConnection({
 });
 
 database.connect();
-
+*/
 
 app.get("/order", function(request, response) {
   idOrder = request.query.idOrder;
@@ -58,6 +58,22 @@ app.post("/order", function(request, response) {
     var result = JSON.stringify(rows);
     response.send(result);
   });
+});
+
+app.get("/customer", function(request, response) {
+/*  database.query('SELECT * FROM customer WHERE idCustomer =  ?', [idCustomer], function(error, rows) {
+    if (error) throw error;
+    var result = JSON.stringify(rows);
+    response.send(result);*/
+    if (idCustomer === 1) {
+      var result = {
+        firstName : Jamie ,
+        lastName : Lannister
+      }
+    console.log(result);
+    response.send(result);
+    }
+//  });
 });
 
 app.post("/customer", function(request, response) {
