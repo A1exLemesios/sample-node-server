@@ -4,6 +4,8 @@ var should = require("should");
 var server = supertest.agent("http://localhost:8081");
 
 // Defining an object called user and applying simple tests to it
+var tempAnswer; // used to delete a user that has just been created
+var answer;
 describe("/user", function() {
 
   var user = {
@@ -49,8 +51,6 @@ describe("/user", function() {
 
 describe("/get/customer", function() {
 
-  var answer;
-
   it("should return a 200 HTTP status code", function(done) {
     server
     .get("/customer")
@@ -75,8 +75,6 @@ describe("/get/customer", function() {
 
 describe("/post/customer", function() {
 
-  var answer;
-
   it("should return a 200 HTTP status code", function(done) {
     server
     .post("/customer")
@@ -100,8 +98,26 @@ describe("/post/customer", function() {
   });
 
   it("should have a property called insertId", function(done) {
-    var tempAnswer = JSON.parse(answer.text);
+    tempAnswer = JSON.parse(answer.text);
     should(tempAnswer).have.property("insertId");
     done();
+  });
+});
+
+describe("/delete/customer", function() {
+
+  it("should return a 200 HTTP status code", function(done) {
+    server
+    .delete("/customer")
+    .query(
+      {
+        idCustomer:tempAnswer.insertId
+      }
+    )
+    .end(function(err, res) {
+      answer = res;
+      should(answer.status).be.eql(200);
+      done();
+    });
   });
 });
