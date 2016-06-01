@@ -1,24 +1,26 @@
 // Declare dependecies
-/*var express     = require("express");
+var express     = require("express");
 var app         = express();
 var mysql       = require("mysql");
-
+/*
 app.use(function(request, response, next) {
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Access-Token");
   next();
 });
+*/
+
 
 var database = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'root',
+  password: '',
   database: 'sample-node-server'
 });
 
 database.connect();
-*/
+
 
 app.get("/order", function(request, response) {
   idOrder = request.query.idOrder;
@@ -60,20 +62,15 @@ app.post("/order", function(request, response) {
   });
 });
 
+// CUSTOMER
 app.get("/customer", function(request, response) {
-/*  database.query('SELECT * FROM customer WHERE idCustomer =  ?', [idCustomer], function(error, rows) {
-    if (error) throw error;
-    var result = JSON.stringify(rows);
-    response.send(result);*/
-    if (idCustomer === 1) {
-      var result = {
-        firstName : Jamie ,
-        lastName : Lannister
-      }
-    console.log(result);
-    response.send(result);
-    }
-//  });
+  idCustomer = request.query.idCustomer;
+  database.query('SELECT * FROM customer WHERE idCustomer =  ?', [idCustomer], function(error, rows) {
+  if (error) throw error;
+  var result = JSON.stringify(rows);
+  response.send(result);
+  console.log(result);
+  });
 });
 
 app.post("/customer", function(request, response) {

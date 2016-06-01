@@ -46,32 +46,61 @@ describe("/user", function() {
   });
 });
 
-/*
-describe("/customer", function(done) {
 
-  var response;
+describe("/get/customer", function() {
+
+  var answer;
 
   it("should return a 200 HTTP status code", function(done) {
     server
     .get("/customer")
     .query(
       {
-        idCustomer: "1"
+        idCustomer: 2
       }
     )
     .end(function(err, res) {
-      response = res;
-      should(response.status).be.eql(200);
-      console.log(response)
+      answer = res;
+      should(answer.status).be.eql(200);
+    // console.log(response.status)
       done();
     });
   });
 
-  it("should return a JSON String",function(done) {
-    should(response).be.type("string");
+  it("should return an object", function(done) {
+    should(answer).be.type("object");
+    done();
+  });
+});
+
+describe("/post/customer", function() {
+
+  var answer;
+
+  it("should return a 200 HTTP status code", function(done) {
+    server
+    .post("/customer")
+    .query(
+      {
+        firstName: "Gandalf",
+        lastName: "theWhite"
+      }
+    )
+    .end(function(err, res) {
+      answer = res;
+      should(answer.status).be.eql(200);
+      done();
+    });
+  });
+
+  it("should return an object", function(done) {
+    should(answer).be.type("object");
     done();
   });
 
+  it("should have a property called firstName and a property called lastName", function(done) {
+    // answer.should.have.property('firstName');
+    should(answer).have.property("insertId");
+    done();
+  });
 });
-*/
-// which is the job of supertest.agent ? ,
