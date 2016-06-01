@@ -93,14 +93,15 @@ describe("/post/customer", function() {
     });
   });
 
-  it("should return an object", function(done) {
-    should(answer).be.type("object");
+
+  it("should return a string", function(done) {
+    should(answer.text).be.type("string");
     done();
   });
 
-  it("should have a property called firstName and a property called lastName", function(done) {
-    // answer.should.have.property('firstName');
-    should(answer).have.property("insertId");
+  it("should have a property called insertId", function(done) {
+    var tempAnswer = JSON.parse(answer.text);
+    should(tempAnswer).have.property("insertId");
     done();
   });
 });

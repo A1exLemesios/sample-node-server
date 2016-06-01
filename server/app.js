@@ -69,7 +69,6 @@ app.get("/customer", function(request, response) {
   if (error) throw error;
   var result = JSON.stringify(rows);
   response.send(result);
-  console.log(result);
   });
 });
 
@@ -81,6 +80,7 @@ app.post("/customer", function(request, response) {
   database.query('INSERT INTO customer SET ?', [values], function(error, rows) {
     if (error) throw error;
     var result = JSON.stringify(rows);
+    console.log(result);
     response.send(result);
   });
 });
