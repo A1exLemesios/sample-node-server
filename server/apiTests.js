@@ -111,7 +111,7 @@ describe("/delete/customer", function() {
     .delete("/customer")
     .query(
       {
-        idCustomer:tempAnswer.insertId
+        idCustomer: tempAnswer.insertId
       }
     )
     .end(function(err, res) {
@@ -119,5 +119,74 @@ describe("/delete/customer", function() {
       should(answer.status).be.eql(200);
       done();
     });
+  });
+});
+
+describe("/post/order", function() {
+
+  it("should return a 200 HTTP status code", function(done) {
+    server
+    .post("/order")
+    .query(
+      {
+        price: 30,
+        idCustomer: 3
+      }
+    )
+    .end(function(err, res) {
+      answer = res;
+      should(answer.status).be.eql(200);
+      done();
+    });
+  });
+  it("should return a string and have a property called insertId", function(done) {
+    should(answer.text).be.type("string");
+    tempAnswer = JSON.parse(answer.text);
+    should(tempAnswer).have.property("insertId");
+    done();
+  });
+
+});
+
+describe("/delete/order", function() {
+
+  it("should return a 200 HTTP status code", function(done) {
+    server
+    .delete("/order")
+    .query(
+      {
+        idOrder: tempAnswer.insertId
+      }
+    )
+    .end(function(err, res) {
+      answer = res;
+      should(answer.status).be.eql(200);
+      done();
+    });
+  });
+});
+
+describe("/put/order", function() {
+
+  it("should return a 200 HTTP status code", function(done) {
+    server
+    .put("/order")
+    .query(
+      {
+        idOrder: 5,
+        price: 80
+      }
+    )
+    .end(function(err, res) {
+      answer = res;
+      should(answer.status).be.eql(200);
+      done();
+    });
+  });
+  it("should be a string and have a property called affectedRows with a value of (1)", function(done) {
+    answer.text.should.be.type("string");
+    tempAnswer = JSON.parse(answer.text);
+    tempAnswer.should.have.property("affectedRows").be.eql(1);
+    done();
   });
 });
